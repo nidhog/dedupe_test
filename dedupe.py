@@ -1,5 +1,13 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+"""
+This code uses dedupe to deduplicate some input data
+
+The input data is generated from existing businesses
+using the locu api
+
+The output is also generated in a csv file
+"""
 
 import os
 import csv
