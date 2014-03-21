@@ -13,8 +13,6 @@ import os
 import csv
 import re
 import collections
-import logging
-import optparse
 from numpy import nan
 
 import dedupe
@@ -46,23 +44,24 @@ for datum in data['objects']:
     time.sleep(.1)
 
 print 'writing data on ',input_file,'...'
-with open(input_file, 'w') as f:
-    writer = csv.writer(f)
-    header0 = 'Id'
-    header1 = 'name'
-    heading_row = header0,header1
-    writer.writerow(heading_row)
-    i = 0
-    for datum in data['objects']:
-        row_id = str(i)
-        i+=1
-        row = i,datum["name"]
-        writer.writerow(row)
-        dummyname = datum["name"]
-        for j in xrange(len(dummyname)):
+if not(os.path.exists(input_file)):
+    with open(input_file, 'w') as f:
+        writer = csv.writer(f)
+        header0 = 'Id'
+        header1 = 'name'
+        heading_row = header0,header1
+        writer.writerow(heading_row)
+        i = 0
+        for datum in data['objects']:
+            row_id = str(i)
             i+=1
-            drow = i, dummyname[:j]+str(j)+dummyname+dummyname[j:]
-            writer.writerow(drow)
+            row = i,datum["name"]
+            writer.writerow(row)
+            dummyname = datum["name"]
+            for j in xrange(len(dummyname)):
+                i+=1
+                drow = i, dummyname[:j]+str(j)+dummyname+dummyname[j:]
+                writer.writerow(drow)
 
 # Importing the data
 def preProcess(column):
@@ -76,7 +75,6 @@ def preProcess(column):
     column = re.sub('  +', ' ', column)
     column = column.strip().strip('"').strip("'").lower().strip()
     return column
-
 
 def readData(filename):
     data_d = {}
@@ -135,7 +133,7 @@ threshold = deduper.threshold(data_d, recall_weight=2)
 print 'Clustering started...'
 clustered_dupes = deduper.match(data_d, threshold)
 
-print '-->   Clustered dupes : ', len(clustered_dupes)
+print '-->   Clustered duplicates : ', len(clustered_dupes)
 print '- * Output data has been exported to :',output_file,' * -'
 
 # saving the output in output_file
