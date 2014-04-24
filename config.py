@@ -20,11 +20,11 @@ file_name = {
             'training':'training_features.json'
             }
             
-    fields = {
-            'Site name': {'type': 'String'},
-            'Address'  : {'type': 'String'},
-            'Zip'      : {'type': 'Custom', 
-                          'comparator' : COMPARATORS.SAME_OR_NOT.compare(), 
-                          'Has Missing' : True},
-                          'Phone': {'type': 'String', 'Has Missing' : True},
-            }
+fields = {
+        'Site name': {'type': 'String'},
+        'Address'  : {'type': 'String'},
+        'Zip'      : {'type': 'Custom', 
+                      'comparator' : COMPARATORS.SAME_OR_NOT.compare(), 
+                      'Has Missing' : True},
+                      'Phone': {'type': 'String', 'Has Missing' : True},
+        }
