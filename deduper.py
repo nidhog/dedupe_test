@@ -52,7 +52,7 @@ class Deduper(object):
             print 'Active Labeling...'
             dedupe.consoleLabel(self.duper)
             self.duper.train()
-            self.duper.save(training_file, settings)
+            self.save(training_file, settings)
         
     def save(self, training_file, settings):
         self.duper.writeTraining(training_file)

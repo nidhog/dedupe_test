@@ -13,3 +13,7 @@ deduper.train(data_sample, True, file_name['training'])
 
 deduper.start_active_labeling(file_name['training'], file_name['setting'])
 
+deduper.start_clustering(data_sample)
+
+output_file = FileManager(file_name['output'],'w')
+output_file.out(file_name['input'], deduper.clusters)
