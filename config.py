@@ -19,10 +19,5 @@ file_name = {
             }
             
 fields = {
-        'Site name': {'type': 'String'},
-        'Address'  : {'type': 'String'},
-        'Zip'      : {'type': 'Custom', 
-                      'comparator' :compare, 
-                      'Has Missing' : True},
-                      'Phone': {'type': 'String', 'Has Missing' : True},
+        'name': {'type': 'String'},
         }

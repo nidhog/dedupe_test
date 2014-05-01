@@ -44,7 +44,7 @@ class Deduper(object):
                         print 'Reading labeled examples from ', training_file, '...'
                         self.duper.readTraining(training_file)
             except:
-                print "|!| UNEXPECTED ERROR"
+                print "|!| UNEXPECTED ERROR. Occured while sampling"
                 raise
                     
     def start_active_labeling(self, training_file, settings):
