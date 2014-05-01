@@ -1,7 +1,7 @@
 dedupe_test
 ===========
 
-Testing dedupe
+Testing <a href="https://github.com/datamade/dedupe"> dedupe</a>
 
 Input Data
 ----------
